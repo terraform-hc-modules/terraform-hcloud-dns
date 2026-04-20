@@ -13,6 +13,6 @@ module "records" {
   source = "./modules/records"
 
   create  = var.create_zone && length(var.records) > 0
-  zone_id = module.zone.id
+  zone    = var.zone_name
   records = var.records
 }

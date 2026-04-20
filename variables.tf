@@ -39,7 +39,6 @@ variable "records" {
     name  = string
     type  = string
     value = string
-    ttl   = optional(number)
   }))
   default = []
 }

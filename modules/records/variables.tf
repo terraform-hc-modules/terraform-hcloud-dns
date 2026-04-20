@@ -1,10 +1,11 @@
 variable "create" {
-  type    = bool
-  default = true
+  description = "Whether to create the records."
+  type        = bool
+  default     = true
 }
 
-variable "zone_id" {
-  description = "Zone ID to add records to."
+variable "zone" {
+  description = "Zone ID or name."
   type        = string
 }
 
@@ -14,7 +15,6 @@ variable "records" {
     name  = string
     type  = string
     value = string
-    ttl   = optional(number)
   }))
   default = []
 }

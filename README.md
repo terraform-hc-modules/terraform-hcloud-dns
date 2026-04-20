@@ -56,7 +56,7 @@ No resources.
 | <a name="input_delete_protection"></a> [delete\_protection](#input\_delete\_protection) | Enable delete protection. | `bool` | `false` | no |
 | <a name="input_labels"></a> [labels](#input\_labels) | Labels to apply. | `map(string)` | `{}` | no |
 | <a name="input_mode"></a> [mode](#input\_mode) | Mode of the zone (primary or secondary). | `string` | `"primary"` | no |
-| <a name="input_records"></a> [records](#input\_records) | List of DNS records. | <pre>list(object({<br/>    name  = string<br/>    type  = string<br/>    value = string<br/>    ttl   = optional(number)<br/>  }))</pre> | `[]` | no |
+| <a name="input_records"></a> [records](#input\_records) | List of DNS records. | <pre>list(object({<br/>    name  = string<br/>    type  = string<br/>    value = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_ttl"></a> [ttl](#input\_ttl) | Default TTL in seconds. | `number` | `3600` | no |
 | <a name="input_zone_name"></a> [zone\_name](#input\_zone\_name) | Name of the zone (domain). | `string` | n/a | yes |
 
