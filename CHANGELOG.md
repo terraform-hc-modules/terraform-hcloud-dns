@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.2.0...v0.2.1) (2026-04-20)
+
+
+### Bug Fixes
+
+* examples now use root module with source = ../../ ([95a2854](https://github.com/terraform-hc-modules/terraform-hcloud-dns/commit/95a2854f2e03ef38435f5947a5dec0773eadb6c5))
+
 # [0.2.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.1.0...v0.2.0) (2026-04-20)
 
 
