@@ -11,14 +11,19 @@ locals {
 }
 
 ################################################################################
-# DNS Zone
+# DNS Module - Simple Zone
 ################################################################################
 
-module "zone" {
-  source = "../../modules/zone"
+module "dns" {
+  source = "../../"
 
-  name   = "example.com"
-  mode   = "primary"
-  ttl    = 3600
-  labels = local.tags
+  zone_name = "example.com"
+  mode      = "primary"
+  ttl       = 3600
+  labels    = local.tags
+}
+
+output "zone_id" {
+  description = "ID of the zone"
+  value       = module.dns.zone_id
 }
