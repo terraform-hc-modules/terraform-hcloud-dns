@@ -30,6 +30,9 @@ jobs:
       - name: Validate
         run: terraform validate
 
+      - name: Test
+        run: terraform test
+
   lint:
     name: Lint
     runs-on: ubuntu-latest

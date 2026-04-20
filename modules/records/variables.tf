@@ -7,6 +7,11 @@ variable "create" {
 variable "zone" {
   description = "Zone ID or name."
   type        = string
+
+  validation {
+    condition     = length(trimspace(var.zone)) > 0
+    error_message = "The 'zone' must not be empty."
+  }
 }
 
 variable "records" {
@@ -17,4 +22,12 @@ variable "records" {
     value = string
   }))
   default = []
+
+  validation {
+    condition = alltrue([
+      for r in var.records :
+      length(trimspace(r.name)) > 0 && length(trimspace(r.type)) > 0 && length(trimspace(r.value)) > 0
+    ])
+    error_message = "Each record must have non-empty 'name', 'type', and 'value'."
+  }
 }
