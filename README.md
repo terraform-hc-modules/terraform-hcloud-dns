@@ -26,6 +26,44 @@ module "dns" {
 | [records](modules/records) | DNS records |
 
 <!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+| ---- | ------- |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0 |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.45 |
+
+## Providers
+
+No providers.
+
+## Modules
+
+| Name | Source | Version |
+| ---- | ------ | ------- |
+| <a name="module_records"></a> [records](#module\_records) | ./modules/records | n/a |
+| <a name="module_zone"></a> [zone](#module\_zone) | ./modules/zone | n/a |
+
+## Resources
+
+No resources.
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+| ---- | ----------- | ---- | ------- | :------: |
+| <a name="input_create_zone"></a> [create\_zone](#input\_create\_zone) | n/a | `bool` | `true` | no |
+| <a name="input_records"></a> [records](#input\_records) | n/a | <pre>list(object({<br/>    name  = string<br/>    type  = string<br/>    value = string<br/>    ttl   = optional(number)<br/>  }))</pre> | `[]` | no |
+| <a name="input_ttl"></a> [ttl](#input\_ttl) | n/a | `number` | `3600` | no |
+| <a name="input_zone_name"></a> [zone\_name](#input\_zone\_name) | n/a | `string` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+| ---- | ----------- |
+| <a name="output_record_ids"></a> [record\_ids](#output\_record\_ids) | n/a |
+| <a name="output_zone_id"></a> [zone\_id](#output\_zone\_id) | n/a |
+| <a name="output_zone_name"></a> [zone\_name](#output\_zone\_name) | n/a |
 <!-- END_TF_DOCS -->
 
 ## License
