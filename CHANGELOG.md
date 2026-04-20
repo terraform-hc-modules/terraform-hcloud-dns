@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.2.1...v0.3.0) (2026-04-20)
+
+
+### Features
+
+* improve DNS module maturity ([8392f44](https://github.com/terraform-hc-modules/terraform-hcloud-dns/commit/8392f449ca6d005ebe29c60691e27413302f82e3))
+
 ## [0.2.1](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.2.0...v0.2.1) (2026-04-20)
 
 
