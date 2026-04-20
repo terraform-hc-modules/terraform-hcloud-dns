@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.1.0...v0.2.0) (2026-04-20)
+
+
+### Features
+
+* add pre-commit, semantic-release, and improve examples ([325c32f](https://github.com/terraform-hc-modules/terraform-hcloud-dns/commit/325c32f6ff1c65a27fc375a954caec0acd173fa3))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
