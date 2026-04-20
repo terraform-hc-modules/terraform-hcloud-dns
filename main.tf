@@ -1,9 +1,12 @@
 module "zone" {
   source = "./modules/zone"
 
-  create = var.create_zone
-  name   = var.zone_name
-  ttl    = var.ttl
+  create            = var.create_zone
+  name              = var.zone_name
+  mode              = var.mode
+  ttl               = var.ttl
+  labels            = var.labels
+  delete_protection = var.delete_protection
 }
 
 module "records" {

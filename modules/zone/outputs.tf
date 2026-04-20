@@ -1,7 +1,14 @@
 output "id" {
-  value = try(hcloud_dns_zone.this[0].id, null)
+  description = "ID of the zone."
+  value       = try(hcloud_zone.this[0].id, null)
 }
 
 output "name" {
-  value = try(hcloud_dns_zone.this[0].name, null)
+  description = "Name of the zone."
+  value       = try(hcloud_zone.this[0].name, null)
+}
+
+output "authoritative_nameservers" {
+  description = "Authoritative nameservers."
+  value       = try(hcloud_zone.this[0].authoritative_nameservers, null)
 }

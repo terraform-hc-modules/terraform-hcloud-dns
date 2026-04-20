@@ -1,18 +1,40 @@
 variable "create_zone" {
-  type    = bool
-  default = true
+  description = "Whether to create the zone."
+  type        = bool
+  default     = true
 }
 
 variable "zone_name" {
-  type = string
+  description = "Name of the zone (domain)."
+  type        = string
+}
+
+variable "mode" {
+  description = "Mode of the zone (primary or secondary)."
+  type        = string
+  default     = "primary"
 }
 
 variable "ttl" {
-  type    = number
-  default = 3600
+  description = "Default TTL in seconds."
+  type        = number
+  default     = 3600
+}
+
+variable "labels" {
+  description = "Labels to apply."
+  type        = map(string)
+  default     = {}
+}
+
+variable "delete_protection" {
+  description = "Enable delete protection."
+  type        = bool
+  default     = false
 }
 
 variable "records" {
+  description = "List of DNS records."
   type = list(object({
     name  = string
     type  = string
