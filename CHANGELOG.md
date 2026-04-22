@@ -1,3 +1,10 @@
+# [0.4.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.3.0...v0.4.0) (2026-04-22)
+
+
+### Features
+
+* **ci:** migrate module to use smurf and add pr checks workflows ([#1](https://github.com/terraform-hc-modules/terraform-hcloud-dns/issues/1)) ([c0745de](https://github.com/terraform-hc-modules/terraform-hcloud-dns/commit/c0745de6dfbc158ad724d9636c900a34497809c1))
+
 # [0.3.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.2.1...v0.3.0) (2026-04-20)
 
 
