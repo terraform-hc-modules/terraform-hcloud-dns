@@ -33,4 +33,3 @@ module "dns" {
     { name = "@", type = "CAA", value = "0 iodef \"mailto:security@example.com\"" },
   ]
 }
-

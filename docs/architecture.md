@@ -19,4 +19,3 @@ flowchart TB
 
   zone --> ns[authoritative_nameservers]
 ```
-
