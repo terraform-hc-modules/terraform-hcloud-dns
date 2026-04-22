@@ -33,4 +33,3 @@ module "dns" {
     { name = "google._domainkey", type = "TXT", value = "v=DKIM1; k=rsa; p=REPLACE_WITH_PUBLIC_KEY" },
   ]
 }
-

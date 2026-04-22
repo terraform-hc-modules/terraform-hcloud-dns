@@ -28,4 +28,3 @@ module "dns" {
     { name = "@", type = "A", value = "1.2.3.6" },
   ]
 }
-

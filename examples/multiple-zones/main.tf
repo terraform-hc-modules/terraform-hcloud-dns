@@ -41,4 +41,3 @@ module "dns_secondary" {
     { name = "api", type = "A", value = "5.6.7.9" },
   ]
 }
-

@@ -48,4 +48,3 @@ run "records_plan_offline" {
     ]
   }
 }
-
