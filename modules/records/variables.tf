@@ -17,9 +17,10 @@ variable "zone" {
 variable "records" {
   description = "List of DNS records."
   type = list(object({
-    name  = string
-    type  = string
-    value = string
+    name    = string
+    type    = string
+    value   = string
+    comment = optional(string) // Added comment field
   }))
   default = []
 

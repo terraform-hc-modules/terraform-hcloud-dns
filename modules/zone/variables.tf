@@ -47,3 +47,14 @@ variable "delete_protection" {
   type        = bool
   default     = false
 }
+
+variable "primary_nameservers" {
+  description = "Primary nameservers for the zone."
+  type = list(object({
+    address        = string
+    port           = optional(number)
+    tsig_algorithm = optional(string)
+    tsig_key       = optional(string)
+  }))
+  default = []
+}
