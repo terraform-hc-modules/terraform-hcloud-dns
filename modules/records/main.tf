@@ -5,5 +5,5 @@ resource "hcloud_zone_record" "this" {
   name    = each.value.name
   type    = each.value.type
   value   = each.value.value
-  comment = each.value.comment // Added comment argument
+  comment = each.value.comment
 }

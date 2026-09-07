@@ -43,9 +43,9 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 | ---- | ----------- | ---- | ------- | :------: |
-| <a name="input_create"></a> [create](#input\_create) | Whether to create the records. | `bool` | `true` | no |
-| <a name="input_records"></a> [records](#input\_records) | List of DNS records. | <pre>list(object({<br/>    name  = string<br/>    type  = string<br/>    value = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_zone"></a> [zone](#input\_zone) | Zone ID or name. | `string` | n/a | yes |
+| <a name="input_create"></a> [create](#input\_create) | Whether to create the records. | `bool` | `true` | no |
+| <a name="input_records"></a> [records](#input\_records) | List of DNS records. | <pre>list(object({<br/>    name    = string<br/>    type    = string<br/>    value   = string<br/>    comment = optional(string)<br/>  }))</pre> | `[]` | no |
 
 ## Outputs
 

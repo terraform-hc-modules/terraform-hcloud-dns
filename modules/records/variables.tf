@@ -20,7 +20,7 @@ variable "records" {
     name    = string
     type    = string
     value   = string
-    comment = optional(string) // Added comment field
+    comment = optional(string)
   }))
   default = []
 
