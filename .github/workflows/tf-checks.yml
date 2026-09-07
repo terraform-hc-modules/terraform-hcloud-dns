@@ -10,39 +10,39 @@ jobs:
     with:
       working_directory: './examples/caa-records/'
       provider: none
+
   complete-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
     with:
       working_directory: './examples/complete/'
       provider: none
+
   email-security-txt-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
     with:
       working_directory: './examples/email-security-txt/'
       provider: none
+
   multiple-records-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
     with:
       working_directory: './examples/multiple-records/'
       provider: none
+
   multiple-zones-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
     with:
       working_directory: './examples/multiple-zones/'
       provider: none
+
   rrset-multi-a-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
     with:
       working_directory: './examples/rrset-multi-a/'
       provider: none
+
   simple-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
     with:
       working_directory: './examples/simple/'
       provider: none
-
-  # Separate job for the TFLint workflow call
-  tf-lint:
-    uses: clouddrove/github-shared-workflows/.github/workflows/tf-lint.yml@v2
-    secrets:
-      GITHUB: ${{ secrets.GITHUB || github.token }}
