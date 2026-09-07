@@ -47,3 +47,14 @@ variable "delete_protection" {
   type        = bool
   default     = false
 }
+
+variable "primary_nameservers" {
+  description = "Primary nameservers of the zone. Required when 'mode' is secondary, forbidden when 'mode' is primary."
+  type = list(object({
+    address        = string
+    port           = optional(number)
+    tsig_algorithm = optional(string)
+    tsig_key       = optional(string)
+  }))
+  default = null
+}
