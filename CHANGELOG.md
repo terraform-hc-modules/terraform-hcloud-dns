@@ -1,3 +1,10 @@
+# [0.5.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.4.0...v0.5.0) (2026-09-07)
+
+
+### Features
+
+* add record comment and zone primary_nameservers support ([#5](https://github.com/terraform-hc-modules/terraform-hcloud-dns/issues/5)) ([12fbf6c](https://github.com/terraform-hc-modules/terraform-hcloud-dns/commit/12fbf6c02ef144e3ef8fca2c373c175fb2b574a7))
+
 # [0.4.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.3.0...v0.4.0) (2026-04-22)
 
 
