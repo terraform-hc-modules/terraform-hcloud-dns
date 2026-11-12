@@ -56,7 +56,8 @@ variable "primary_nameservers" {
     tsig_algorithm = optional(string)
     tsig_key       = optional(string)
   }))
-  default = null
+  default   = null
+  sensitive = true
 }
 
 variable "records" {

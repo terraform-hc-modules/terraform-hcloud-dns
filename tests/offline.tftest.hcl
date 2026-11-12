@@ -26,6 +26,32 @@ run "zone_plan_offline" {
   }
 }
 
+run "secondary_zone_with_tsig_plan_offline" {
+  command = plan
+
+  plan_options {
+    refresh = false
+  }
+
+  module {
+    source = "./modules/zone"
+  }
+
+  variables {
+    name = "example.com"
+    mode = "secondary"
+
+    primary_nameservers = [
+      { address = "203.0.113.10", port = 53, tsig_algorithm = "hmac-sha256", tsig_key = "c2VjcmV0" },
+    ]
+  }
+
+  assert {
+    condition     = length(hcloud_zone.this) == 1
+    error_message = "expected a secondary zone to be planned"
+  }
+}
+
 run "records_plan_offline" {
   command = plan
 
