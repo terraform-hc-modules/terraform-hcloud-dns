@@ -13,7 +13,8 @@ module "zone" {
 module "records" {
   source = "./modules/records"
 
-  create  = var.create_zone && length(var.records) > 0
-  zone    = var.zone_name
+  create = var.create_zone && length(var.records) > 0
+  # Referencing the zone module orders record creation after the zone exists.
+  zone    = coalesce(module.zone.name, var.zone_name)
   records = var.records
 }
