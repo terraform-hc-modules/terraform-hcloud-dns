@@ -64,13 +64,22 @@ run "records_plan_offline" {
   }
 
   variables {
-    create = false
-    zone   = "example.com"
+    zone = "example.com"
 
     records = [
       { name = "@", type = "A", value = "1.2.3.4" },
       { name = "@", type = "A", value = "1.2.3.5" },
       { name = "@", type = "A", value = "1.2.3.6" },
     ]
+  }
+
+  assert {
+    condition     = length(hcloud_zone_record.this) == 3
+    error_message = "expected one record per value"
+  }
+
+  assert {
+    condition     = output.records_by_type_name["A-@"] == ["1.2.3.4", "1.2.3.5", "1.2.3.6"]
+    error_message = "expected record values grouped under 'A-@'"
   }
 }

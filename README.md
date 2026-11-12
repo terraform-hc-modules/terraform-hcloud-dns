@@ -72,8 +72,8 @@ No resources.
 | Name | Description |
 | ---- | ----------- |
 | <a name="output_authoritative_nameservers"></a> [authoritative\_nameservers](#output\_authoritative\_nameservers) | Authoritative nameservers for the zone. |
-| <a name="output_record_ids"></a> [record\_ids](#output\_record\_ids) | Map of created record IDs, keyed by a stable unique key. |
-| <a name="output_record_ids_by_type_name"></a> [record\_ids\_by\_type\_name](#output\_record\_ids\_by\_type\_name) | Map of record IDs grouped by record type and name, keyed as '<TYPE>-<NAME>'. |
+| <a name="output_records"></a> [records](#output\_records) | Map of managed records, keyed by a stable unique key. Each value has zone, name, type, value and comment. |
+| <a name="output_records_by_type_name"></a> [records\_by\_type\_name](#output\_records\_by\_type\_name) | Map of record values grouped by record type and name, keyed as '<TYPE>-<NAME>'. |
 | <a name="output_zone_id"></a> [zone\_id](#output\_zone\_id) | ID of the zone. |
 | <a name="output_zone_name"></a> [zone\_name](#output\_zone\_name) | Name of the zone. |
 <!-- END_TF_DOCS -->

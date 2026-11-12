@@ -51,6 +51,6 @@ No modules.
 
 | Name | Description |
 | ---- | ----------- |
-| <a name="output_record_ids"></a> [record\_ids](#output\_record\_ids) | Map of record IDs, keyed by a stable unique key. |
-| <a name="output_record_ids_by_type_name"></a> [record\_ids\_by\_type\_name](#output\_record\_ids\_by\_type\_name) | Map of record IDs grouped by record type and name, keyed as '<TYPE>-<NAME>'. |
+| <a name="output_records"></a> [records](#output\_records) | Map of managed records, keyed by a stable unique key. Each value has zone, name, type, value and comment. |
+| <a name="output_records_by_type_name"></a> [records\_by\_type\_name](#output\_records\_by\_type\_name) | Map of record values grouped by record type and name, keyed as '<TYPE>-<NAME>'. |
 <!-- END_TF_DOCS -->
