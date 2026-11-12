@@ -18,3 +18,12 @@ module "records" {
   zone    = coalesce(module.zone.name, var.zone_name)
   records = var.records
 }
+
+module "rrsets" {
+  source = "./modules/rrset"
+
+  create = var.create_zone && length(var.rrsets) > 0
+  # Referencing the zone module orders RRSet creation after the zone exists.
+  zone   = coalesce(module.zone.name, var.zone_name)
+  rrsets = var.rrsets
+}

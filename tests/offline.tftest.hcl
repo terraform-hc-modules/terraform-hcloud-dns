@@ -83,3 +83,82 @@ run "records_plan_offline" {
     error_message = "expected record values grouped under 'A-@'"
   }
 }
+
+run "rrset_plan_offline" {
+  command = plan
+
+  plan_options {
+    refresh = false
+  }
+
+  module {
+    source = "./modules/rrset"
+  }
+
+  variables {
+    zone = "example.com"
+
+    rrsets = [
+      {
+        name = "@"
+        type = "A"
+        ttl  = 300
+        records = [
+          { value = "1.2.3.4" },
+          { value = "1.2.3.5", comment = "secondary" },
+        ]
+      },
+      {
+        name    = "www"
+        type    = "cname"
+        records = [{ value = "example.com." }]
+      },
+    ]
+  }
+
+  assert {
+    condition     = toset(keys(hcloud_zone_rrset.this)) == toset(["A-@", "CNAME-www"])
+    error_message = "expected one RRSet per name and type, keyed as '<TYPE>-<NAME>'"
+  }
+
+  assert {
+    condition     = length(hcloud_zone_rrset.this["A-@"].records) == 2
+    error_message = "expected both A values in a single RRSet"
+  }
+}
+
+run "rrset_empty_record_list_fails" {
+  command = plan
+
+  module {
+    source = "./modules/rrset"
+  }
+
+  variables {
+    zone   = "example.com"
+    rrsets = [{ name = "@", type = "A", records = [] }]
+  }
+
+  expect_failures = [var.rrsets]
+}
+
+run "root_rrsets_plan_offline" {
+  command = plan
+
+  plan_options {
+    refresh = false
+  }
+
+  variables {
+    zone_name = "example.com"
+
+    rrsets = [
+      { name = "@", type = "A", records = [{ value = "1.2.3.4" }] },
+    ]
+  }
+
+  assert {
+    condition     = length(module.rrsets.rrset_ids) == 1
+    error_message = "expected the root module to plan one RRSet"
+  }
+}
