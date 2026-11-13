@@ -1,7 +1,7 @@
 resource "hcloud_zone" "this" {
   count = var.create ? 1 : 0
 
-  name              = var.name
+  name              = provider::hcloud::idna(var.name)
   mode              = var.mode
   ttl               = var.ttl
   labels            = var.labels
