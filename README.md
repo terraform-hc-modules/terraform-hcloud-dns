@@ -1,6 +1,6 @@
 # Hetzner Cloud DNS Module
 
-[![Terraform](https://img.shields.io/badge/Terraform-%3E%3D1.0-blueviolet)](https://www.terraform.io/)
+[![Terraform](https://img.shields.io/badge/Terraform-%3E%3D1.10-blueviolet)](https://www.terraform.io/)
 [![License: MPL-2.0](https://img.shields.io/badge/License-MPL--2.0-blue.svg)](https://opensource.org/licenses/MPL-2.0)
 [![CI](https://github.com/terraform-hc-modules/terraform-hcloud-dns/actions/workflows/ci.yml/badge.svg)](https://github.com/terraform-hc-modules/terraform-hcloud-dns/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/terraform-hc-modules/terraform-hcloud-dns)](https://github.com/terraform-hc-modules/terraform-hcloud-dns/releases)
@@ -30,6 +30,7 @@ module "dns" {
 |--------|-------------|
 | [zone](modules/zone) | DNS zones |
 | [records](modules/records) | DNS records |
+| [rrset](modules/rrset) | DNS RRSets |
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -37,7 +38,7 @@ module "dns" {
 | Name | Version |
 | ---- | ------- |
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.10.0 |
-| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.45 |
+| <a name="requirement_hcloud"></a> [hcloud](#requirement\_hcloud) | >= 1.60 |
 
 ## Providers
 
@@ -48,6 +49,7 @@ No providers.
 | Name | Source | Version |
 | ---- | ------ | ------- |
 | <a name="module_records"></a> [records](#module\_records) | ./modules/records | n/a |
+| <a name="module_rrsets"></a> [rrsets](#module\_rrsets) | ./modules/rrset | n/a |
 | <a name="module_zone"></a> [zone](#module\_zone) | ./modules/zone | n/a |
 
 ## Resources
@@ -65,6 +67,7 @@ No resources.
 | <a name="input_mode"></a> [mode](#input\_mode) | Mode of the zone (primary or secondary). | `string` | `"primary"` | no |
 | <a name="input_primary_nameservers"></a> [primary\_nameservers](#input\_primary\_nameservers) | Primary nameservers of the zone. Required when 'mode' is secondary, forbidden when 'mode' is primary. | <pre>list(object({<br/>    address        = string<br/>    port           = optional(number)<br/>    tsig_algorithm = optional(string)<br/>    tsig_key       = optional(string)<br/>  }))</pre> | `null` | no |
 | <a name="input_records"></a> [records](#input\_records) | List of DNS records. | <pre>list(object({<br/>    name    = string<br/>    type    = string<br/>    value   = string<br/>    comment = optional(string)<br/>  }))</pre> | `[]` | no |
+| <a name="input_rrsets"></a> [rrsets](#input\_rrsets) | List of DNS RRSets. Each name and type pair must be unique, all values for that pair go in 'records'. | <pre>list(object({<br/>    name              = string<br/>    type              = string<br/>    ttl               = optional(number)<br/>    labels            = optional(map(string))<br/>    change_protection = optional(bool)<br/>    records = list(object({<br/>      value   = string<br/>      comment = optional(string)<br/>    }))<br/>  }))</pre> | `[]` | no |
 | <a name="input_ttl"></a> [ttl](#input\_ttl) | Default TTL in seconds. | `number` | `3600` | no |
 
 ## Outputs
@@ -72,8 +75,9 @@ No resources.
 | Name | Description |
 | ---- | ----------- |
 | <a name="output_authoritative_nameservers"></a> [authoritative\_nameservers](#output\_authoritative\_nameservers) | Authoritative nameservers for the zone. |
-| <a name="output_record_ids"></a> [record\_ids](#output\_record\_ids) | Map of created record IDs, keyed by a stable unique key. |
-| <a name="output_record_ids_by_type_name"></a> [record\_ids\_by\_type\_name](#output\_record\_ids\_by\_type\_name) | Map of record IDs grouped by record type and name, keyed as '<TYPE>-<NAME>'. |
+| <a name="output_records"></a> [records](#output\_records) | Map of managed records, keyed by a stable unique key. Each value has zone, name, type, value and comment. |
+| <a name="output_records_by_type_name"></a> [records\_by\_type\_name](#output\_records\_by\_type\_name) | Map of record values grouped by record type and name, keyed as '<TYPE>-<NAME>'. |
+| <a name="output_rrset_ids"></a> [rrset\_ids](#output\_rrset\_ids) | Map of created RRSet IDs, keyed as '<TYPE>-<NAME>'. |
 | <a name="output_zone_id"></a> [zone\_id](#output\_zone\_id) | ID of the zone. |
 | <a name="output_zone_name"></a> [zone\_name](#output\_zone\_name) | Name of the zone. |
 <!-- END_TF_DOCS -->

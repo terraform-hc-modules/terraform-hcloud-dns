@@ -13,12 +13,17 @@ output "authoritative_nameservers" {
   value       = module.zone.authoritative_nameservers
 }
 
-output "record_ids" {
-  description = "Map of created record IDs, keyed by a stable unique key."
-  value       = module.records.record_ids
+output "records" {
+  description = "Map of managed records, keyed by a stable unique key. Each value has zone, name, type, value and comment."
+  value       = module.records.records
 }
 
-output "record_ids_by_type_name" {
-  description = "Map of record IDs grouped by record type and name, keyed as '<TYPE>-<NAME>'."
-  value       = module.records.record_ids_by_type_name
+output "records_by_type_name" {
+  description = "Map of record values grouped by record type and name, keyed as '<TYPE>-<NAME>'."
+  value       = module.records.records_by_type_name
+}
+
+output "rrset_ids" {
+  description = "Map of created RRSet IDs, keyed as '<TYPE>-<NAME>'."
+  value       = module.rrsets.rrset_ids
 }

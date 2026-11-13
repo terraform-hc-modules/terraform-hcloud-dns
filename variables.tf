@@ -56,7 +56,8 @@ variable "primary_nameservers" {
     tsig_algorithm = optional(string)
     tsig_key       = optional(string)
   }))
-  default = null
+  default   = null
+  sensitive = true
 }
 
 variable "records" {
@@ -75,5 +76,29 @@ variable "records" {
       length(trimspace(r.name)) > 0 && length(trimspace(r.type)) > 0 && length(trimspace(r.value)) > 0
     ])
     error_message = "Each record must have non-empty 'name', 'type', and 'value'."
+  }
+}
+
+variable "rrsets" {
+  description = "List of DNS RRSets. Each name and type pair must be unique, all values for that pair go in 'records'."
+  type = list(object({
+    name              = string
+    type              = string
+    ttl               = optional(number)
+    labels            = optional(map(string))
+    change_protection = optional(bool)
+    records = list(object({
+      value   = string
+      comment = optional(string)
+    }))
+  }))
+  default = []
+
+  validation {
+    condition = alltrue([
+      for r in var.rrsets :
+      length(trimspace(r.name)) > 0 && length(trimspace(r.type)) > 0 && length(r.records) > 0
+    ])
+    error_message = "Each RRSet must have non-empty 'name' and 'type' and at least one record."
   }
 }
