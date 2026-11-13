@@ -1,3 +1,24 @@
+## [0.7.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.6.1...v0.7.0) (2026-11-13)
+
+### Breaking changes
+
+* `record_ids` / `record_ids_by_type_name` are replaced by `records` / `records_by_type_name`. `hcloud_zone_record` has no `id` attribute, so the old outputs failed to plan whenever records were set
+* hcloud provider floor raised to `>= 1.60`
+* submodules, wrappers and examples require Terraform `>= 1.10.0`
+
+### Bug Fixes
+
+* records depend on the zone module output, so they are created after the zone
+* `primary_nameservers` (contains the TSIG key) is marked sensitive
+
+### Features
+
+* new `modules/rrset` for `hcloud_zone_rrset`, root input `rrsets` and output `rrset_ids`, `examples/rrset`
+* zone names go through `provider::hcloud::idna` (IDN zones become punycode)
+* TXT values go through `provider::hcloud::txt_record` unless already quoted. Existing unquoted TXT records show an in-place change on the next plan
+
+[#12](https://github.com/terraform-hc-modules/terraform-hcloud-dns/pull/12), [#13](https://github.com/terraform-hc-modules/terraform-hcloud-dns/pull/13), [#14](https://github.com/terraform-hc-modules/terraform-hcloud-dns/pull/14), closes [#11](https://github.com/terraform-hc-modules/terraform-hcloud-dns/issues/11)
+
 # [0.5.0](https://github.com/terraform-hc-modules/terraform-hcloud-dns/compare/v0.4.0...v0.5.0) (2026-09-07)
 
 
