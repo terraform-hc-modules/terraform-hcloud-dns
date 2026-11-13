@@ -41,6 +41,12 @@ jobs:
       working_directory: './examples/rrset-multi-a/'
       provider: none
 
+  rrset-example:
+    uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
+    with:
+      working_directory: './examples/rrset/'
+      provider: none
+
   simple-example:
     uses: clouddrove/github-shared-workflows/.github/workflows/tf-checks.yml@v2
     with:

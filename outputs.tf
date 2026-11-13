@@ -22,3 +22,8 @@ output "records_by_type_name" {
   description = "Map of record values grouped by record type and name, keyed as '<TYPE>-<NAME>'."
   value       = module.records.records_by_type_name
 }
+
+output "rrset_ids" {
+  description = "Map of created RRSet IDs, keyed as '<TYPE>-<NAME>'."
+  value       = module.rrsets.rrset_ids
+}

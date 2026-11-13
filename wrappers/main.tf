@@ -5,6 +5,7 @@ module "wrapper" {
   zone_name = each.value.zone_name
   ttl       = try(each.value.ttl, 3600)
   records   = try(each.value.records, [])
+  rrsets    = try(each.value.rrsets, [])
 }
 
 variable "items" {
